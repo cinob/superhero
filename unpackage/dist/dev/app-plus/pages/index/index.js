@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"page { width: 100%; height: 100%; background-color: #f7f7f7; position: absolute; }\n.",[1],"page .",[1],"carousel { width: 100%; height: ",[0,440],"; }\n",],undefined,{path:"./pages/index/index.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/index/index.wxml') } }));
