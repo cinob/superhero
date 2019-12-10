@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "navigationStyle": "default",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "trailer-stars": "/components/trailerStars"
+  }
 }

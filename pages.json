@@ -6,7 +6,8 @@
         "navigationStyle":"custom",
         "mp-weixin": {
           "navigationStyle":"default"
-        }
+        },
+        "enablePullDownRefresh": true
       }
     },
     {

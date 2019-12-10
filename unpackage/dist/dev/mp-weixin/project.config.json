@@ -4,11 +4,13 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false
+    "urlCheck": false,
+    "postcss": true,
+    "es6": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.9.2",
-  "appid": "touristappid",
+  "appid": "wxcbc2e7e271c1e57d",
   "projectname": "cinob-superhero",
   "condition": {
     "search": {
