@@ -3,20 +3,35 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationStyle":"custom",
-        "mp-weixin": {
-          "navigationStyle":"default"
+        "app-plus": {
+          "titleNView": false
         },
         "enablePullDownRefresh": true
       }
     },
     {
       "path" : "pages/search/search",
-      "style" : {}
+      "style" : {
+        "navigationBarTitleText": "搜索预告片"
+      }
     },
     {
       "path" : "pages/me/me",
       "style" : {}
+    },
+    {
+      "path" : "pages/movie/movie",
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "type" : "transparent"
+          }
+        }
+      }
+    },
+    {
+        "path" : "pages/cover/cover",
+        "style" : {}
     }
   ],
   "globalStyle": {

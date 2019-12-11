@@ -21,9 +21,4 @@ export default {
   
 .page-block
   background-color #fff
-
-ellipsis()
-  white-space nowrap
-  overflow hidden
-  text-overflow ellipsis
 </style>

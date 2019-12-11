@@ -133,7 +133,7 @@ export default {
     },
     getGuessULikeList (callback) {
       uni.request({
-        url: this.serverUrl + '/index/guessULike?qq=lee83440456',
+        url: this.serverUrl + '/index/guessULike?qq=lee81280562',
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -147,7 +147,7 @@ export default {
     },
     getCarouselList () {
       uni.request({
-        url: this.serverUrl + '/index/carousel/list?qq=lee83440456',
+        url: this.serverUrl + '/index/carousel/list?qq=lee81280562',
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -158,7 +158,7 @@ export default {
     },
     getHotList () {
       uni.request({
-        url: this.serverUrl + '/index/movie/hot?qq=lee83440456&type=superhero',
+        url: this.serverUrl + '/index/movie/hot?qq=lee81280562&type=superhero',
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -169,7 +169,7 @@ export default {
     },
     getTrailerList () {
       uni.request({
-        url: this.serverUrl + '/index/movie/hot?qq=lee83440456&type=trailer',
+        url: this.serverUrl + '/index/movie/hot?qq=lee81280562&type=trailer',
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -195,13 +195,7 @@ export default {
 </script>
 
 <style lang="stylus">
-ellipsis()
-  white-space nowrap
-  overflow hidden
-  text-overflow ellipsis
-flex(f)
-  display flex
-  flex-direction f
+@import '/../../common/globle.styl'
 
 .carousel
   width: 100%

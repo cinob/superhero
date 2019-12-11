@@ -72,5 +72,19 @@
     },
     "mp-toutiao" : {
         "usingComponents" : true
+    },
+    "h5" : {
+        "devServer" : {
+            "https" : true
+        },
+        "title" : "movie",
+        "router" : {
+            "base" : "/movie/"
+        },
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        }
     }
 }
