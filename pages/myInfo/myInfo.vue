@@ -57,7 +57,7 @@
       </view>
       
       <view class="footer-wapper">
-        <view class="footer-words">
+        <view class="footer-words" @click="clearStorage">
           清理缓存
         </view>
         <view class="footer-words logout">
@@ -80,7 +80,14 @@ export default {
     }
   },
   methods: {
-    
+    clearStorage () {
+      uni.clearStorage()
+      uni.showToast({
+        title: '清理缓存成功',
+        mask: false,
+        duration: 1500
+      })
+    }
   }
 }
 </script>
