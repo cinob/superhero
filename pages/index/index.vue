@@ -18,7 +18,7 @@
     <scroll-view scroll-x="true" class="page-block hot">
       <view v-for="item in hotList" :key="item.id" class="single-poster">
         <view class="poster-wapper">
-          <image :src="item.cover" class="poster"></image>
+          <image :src="item.cover" class="poster" :data-movieId="item.id" @click="showMovieDetail"></image>
           <view class="movie-name">
             {{item.name}}
           </view>
@@ -38,6 +38,9 @@
     
     <view class="hot-movies page-block">
       <video
+        :id="item.id"
+        :data-playingIndex="item.id"
+        @play="playVideo"
         v-for="item in trailerList"
         :key="item.id"
         :src="item.trailer"
@@ -58,7 +61,7 @@
     
     <view class="page-block guess-u-like">
       <view v-for="(item,gIndex) in guessULikeList" :key="item.id" class="single-like-movie">
-        <image :src="item.poster" class="poster"></image>
+        <image :src="item.poster" class="poster" mode="aspectFill" :data-movieId="item.id" @click="showMovieDetail"></image>
         <view class="movie-desc">
           <view class="movie-title">
             {{item.name}}
@@ -115,6 +118,19 @@ export default {
     // #endif
   },
   methods: {
+    playVideo (e) {
+      if (e) {
+        if (this.playing) {
+          this.playing.pause()
+        }
+        this.playing = uni.createVideoContext(e.target.dataset.playingindex)
+      }
+    },
+    showMovieDetail (e) {
+      uni.navigateTo({
+        url: "../movie/movie?movieId=" + e.target.dataset.movieid
+      })
+    },
     praiseMe(e) {
       // #ifdef APP-PLUS || MP-WEIXIN
       const gIndex = e.currentTarget.dataset.gindex
@@ -133,7 +149,7 @@ export default {
     },
     getGuessULikeList (callback) {
       uni.request({
-        url: this.serverUrl + '/index/guessULike?qq=lee81280562',
+        url: this.serverUrl + '/index/guessULike?'+this.key,
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -147,7 +163,7 @@ export default {
     },
     getCarouselList () {
       uni.request({
-        url: this.serverUrl + '/index/carousel/list?qq=lee81280562',
+        url: this.serverUrl + '/index/carousel/list?'+this.key,
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -158,7 +174,7 @@ export default {
     },
     getHotList () {
       uni.request({
-        url: this.serverUrl + '/index/movie/hot?qq=lee81280562&type=superhero',
+        url: this.serverUrl + '/index/movie/hot?'+this.key+'&type=superhero',
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -169,7 +185,7 @@ export default {
     },
     getTrailerList () {
       uni.request({
-        url: this.serverUrl + '/index/movie/hot?qq=lee81280562&type=trailer',
+        url: this.serverUrl + '/index/movie/hot?'+this.key+'&type=trailer',
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -190,6 +206,11 @@ export default {
       mask: true
     })
     this.getGuessULikeList(this.refreshCallback)
+  },
+  onHide() {
+    if (this.playing) {
+      this.playing.pause()
+    }
   }
 }
 </script>

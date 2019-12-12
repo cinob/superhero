@@ -1,7 +1,7 @@
 <template>
 	<view class="page">
 		<view class="player">
-      <video :src="movieInfo.trailer" :poster="movieInfo.poster" class="movie" controls></video>
+      <video id="myMovie" :src="movieInfo.trailer" :poster="movieInfo.poster" class="movie" controls></video>
     </view>
     
     <view class="movie-info">
@@ -90,7 +90,7 @@ export default {
     },
     getActors (method) {
       uni.request({
-        url: this.serverUrl + '	/search/staff/'+this.movieId+'/'+method+'?qq=lee81280562',
+        url: this.serverUrl + '	/search/staff/'+this.movieId+'/'+method+'?'+this.key,
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -110,7 +110,7 @@ export default {
         title: '请稍后...'
       })
       uni.request({
-        url: this.serverUrl + '/search/trailer/'+this.movieId+'?qq=lee81280562',
+        url: this.serverUrl + '/search/trailer/'+this.movieId+'?'+this.key,
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
@@ -137,6 +137,42 @@ export default {
       frontColor: "#ffffff",
       backgroundColor: "#000"
     })
+  },
+  onReady () {
+    this.videoContext = uni.createVideoContext('myMovie')
+  },
+  onShow () {
+    if (this.videoContext) {
+      this.videoContext.play()
+    }
+  },
+  onHide () {
+    this.videoContext.pause()
+  },
+  onShareAppMessage (res) {
+    return {
+      title: this.movieInfo.name,
+      path: '/pages/movie/movie?movieId='+this.movieId
+    }
+  },
+  onNavigationBarButtonTap (e) {
+    if (e.index === 0) {
+      uni.share({
+        provider: "weixin",
+        scene: "WXSenceTimeline",
+        type: 0,
+        href: "https://cinob.github.io/movie/index.html#/pages/movie/movie?movieId=" + this.movieId,
+        title: "超英预告：" + this.movieInfo.name,
+        summary: "超英预告：" + this.movieInfo.name,
+        imageUrl: this.movieInfo.cover,
+        success: function (res) {
+            console.log("success:" + JSON.stringify(res))
+        },
+        fail: function (err) {
+            console.log("fail:" + JSON.stringify(err))
+        }
+      })
+    }
   }
 }
 </script>

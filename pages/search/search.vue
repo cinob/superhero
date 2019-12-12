@@ -39,7 +39,7 @@ export default {
         title: '请稍后...'
       })
       uni.request({
-        url: this.serverUrl + '/search/list?qq=lee81280562&keywords='+this.keywords+'&page='+this.page+'&pageSize='+this.pageSize,
+        url: this.serverUrl + '/search/list?'+this.key+'&keywords='+this.keywords+'&page='+this.page+'&pageSize='+this.pageSize,
         method: "POST",
         success: (res) => {
           if (res.data.status === 200) {
