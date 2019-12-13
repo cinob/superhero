@@ -51,7 +51,19 @@
     },
     {
       "path" : "pages/myInfo/myInfo",
-      "style" : {}
+      "style" : {
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "个人信息",
+        "navigationBarBackgroundColor": "#ffd655"
+      }
+    },
+    {
+        "path" : "pages/myImg/myImg",
+        "style" : {
+          "navigationBarTextStyle": "white",
+          "navigationBarTitleText": "头像上传",
+          "navigationBarBackgroundColor": "#000"
+        }
     }
   ],
   "globalStyle": {

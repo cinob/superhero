@@ -12,7 +12,7 @@ export default {
 
 <style lang="stylus">
 .line-wapper
-  padding 0 20rpx
+  padding 0
   .line
     height 1px
     background-color #DBDBDA

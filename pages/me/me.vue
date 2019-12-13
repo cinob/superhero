@@ -52,8 +52,8 @@ export default {
     }
   },
   onShow () {
-    const userInfo = uni.getStorageSync('userInfo')
-    if (userInfo != null && userInfo != '' && userInfo != undefined) {
+    const userInfo = this.getStorage('userInfo')
+    if (userInfo) {
       this.isLogin = true
       this.userInfo = userInfo
     } else {
