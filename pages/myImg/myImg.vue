@@ -38,8 +38,24 @@ export default {
         url: this.serverUrl + '/user/uploadFace?userId=' + userInfo.id+'&'+this.key,
         filePath: this.imgPath,
         name: 'file',
+        header: {
+          'headerUserId': userInfo.id,
+          'headerUserToken': userInfo.userUniqueToken
+        },
         success: (res) => {
-          console.log(res)
+          const data = JSON.parse(res.data)
+          if (data.status === 200) {
+            uni.setStorageSync('userInfo', data.data)
+            uni.navigateBack({
+              delta: 1
+            })
+          } else if (data.status === 500 || data.status === 502) {
+            uni.showToast({
+              title: data.msg,
+              image: '../../static/icos/error.png',
+              duration: 2000
+            })
+          }
         },
         complete: () => {
           uni.hideLoading()

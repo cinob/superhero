@@ -12,7 +12,7 @@
         </view>
       </view>
       <breakLine></breakLine>
-      <view class="item-wapper">
+      <view class="item-wapper" @click="modifyNickname">
         <view class="info-words">昵称</view>
         <view class="right-wapper">
           <view class="gray-fields">{{userInfo.nickname}}</view>
@@ -24,7 +24,7 @@
       
       <breakLine></breakLine>
       
-      <view class="item-wapper">
+      <view class="item-wapper" @click="modifyBirthday">
         <view class="info-words">生日</view>
         <view class="right-wapper">
           <view class="gray-fields">{{userInfo.birthday}}</view>
@@ -75,6 +75,16 @@ export default {
     }
   },
   methods: {
+    modifyNickname () {
+      uni.navigateTo({
+        url: '../myNickname/myNickname'
+      })
+    },
+    modifyBirthday () {
+      uni.navigateTo({
+        url: '../myBirthday/myBirthday'
+      })
+    },
     operator (){
       uni.showActionSheet({
         itemList: ['查看我的头像', '从相册选择上传'],

@@ -11,10 +11,18 @@ Vue.prototype.getStorage = function (key) {
     return
   }
 }
-Vue.prototype.key = "qq=lee19465392"
-App.mpType = 'app'
 
-const app = new Vue({
-    ...App
+uni.request({
+  url: 'http://api.cinob.cn?m=getKey',
+  method: 'GET',
+  success: (res) => {
+    Vue.prototype.key = "qq="+res.data.key
+    App.mpType = 'app'
+    
+    const app = new Vue({
+        ...App
+    })
+    app.$mount()
+  }
 })
-app.$mount()
+
