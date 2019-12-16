@@ -36,7 +36,7 @@
       
       <breakLine></breakLine>
       
-      <view class="item-wapper">
+      <view class="item-wapper" @click="modifySex">
         <view class="info-words">性别</view>
         <view class="right-wapper">
           <view class="gray-fields">
@@ -83,6 +83,11 @@ export default {
     modifyBirthday () {
       uni.navigateTo({
         url: '../myBirthday/myBirthday'
+      })
+    },
+    modifySex () {
+      uni.navigateTo({
+        url: '../mySex/mySex'
       })
     },
     operator (){

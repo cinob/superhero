@@ -1,10 +1,15 @@
 <template>
   <view class="page page-fill">
-    <form @submit="birthdaySub">
+    <form @submit="sexSub">
       <view class="page-block">
-        <picker mode="date" @change="dateChange">
-          <view class="birthday">{{birthday}}</view>
-        </picker>
+        <radio-group class="radio-sex" @change="changeSex">
+          <label class="radio-single">
+            <radio value="1" :checked="sex === 1" /><text>男</text>
+          </label>
+          <label class="radio-single">
+            <radio value="0" :checked="sex === 0" /><text>女</text>
+          </label>
+        </radio-group>
       </view>
       <button type="primary" form-type="submit" class="subbtn">提交</button>
     </form>
@@ -15,11 +20,14 @@
 export default {
   data() {
     return {
-      birthday: ''
+      
     }
   },
   methods: {
-    birthdaySub () {
+    changeSex (e) {
+      this.sex = e.detail.value
+    },
+    sexSub () {
       uni.request({
         url: this.serverUrl + '/user/modifyUserinfo?'+this.key,
         header: {
@@ -28,7 +36,7 @@ export default {
         },
         data: {
           'userId': this.userInfo.id,
-          'birthday': this.birthday
+          'sex': this.sex
         },
         method: 'POST',
         success: (res) => {
@@ -46,14 +54,11 @@ export default {
           }
         }
       })
-    },
-    dateChange (e) {
-      this.birthday = e.detail.value
     }
   },
   onLoad () {
     this.userInfo = this.getStorage('userInfo')
-    this.birthday = this.userInfo.birthday
+    this.sex = this.userInfo.sex
   }
 }
 </script>
@@ -67,16 +72,10 @@ export default {
   position absolute
   .page-block
     margin-top 20rpx
-    .birth-input
-      background-color white
-      height 80rpx
-      line-height 40rpx
-      padding-left 20rpx
-    .birthday
-      background-color white
-      height 80rpx
-      padding-left 20rpx
-      padding-top 30rpx
+    .radio-sex
+      flex(column)
+      .radio-single
+        padding 20rpx
   .subbtn
     width 95%
     margin-top 40rpx

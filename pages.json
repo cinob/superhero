@@ -74,14 +74,22 @@
         }
     }
     ,{
-        "path" : "pages/myBirthday/myBirthday",
-        "style": {
-          "navigationBarTextStyle": "white",
-          "navigationBarTitleText": "修改生日",
-          "navigationBarBackgroundColor": "#ffd655"
-        }
+      "path" : "pages/myBirthday/myBirthday",
+      "style": {
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "修改生日",
+        "navigationBarBackgroundColor": "#ffd655"
+      }
     }
-  ],
+    ,{
+      "path" : "pages/mySex/mySex",
+      "style": {
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "修改性别",
+        "navigationBarBackgroundColor": "#ffd655"
+      }
+      }
+    ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "CINOB超英预告",
